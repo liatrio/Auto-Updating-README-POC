@@ -54,9 +54,23 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # - name: Replace
+      #   run: |
+      #     sed -i "s/<-- SH-Generated -->[\s\S]*?<-- !SH-Generated -->/${{ github.event.head_commit.message }}/g" README.md
       - name: Replace
+        env:
+          REPLACEMENT: |
+            <-- SH-Generated -->
+
+            - **Last Commit Message**: ${{ github.event.head_commit.message }}
+
+            - **Last Commit Author**: ${{ github.event.head_commit.author.name }}
+
+            - **Last Commit Date**: ${{ github.event.head_commit.timestamp }}
+
+            <-- !SH-Generated -->
         run: |
-          sed -i "s/<-- SH-Generated -->[\s\S]*?<-- !SH-Generated -->/${{ github.event.head_commit.message }}/g" README.md
+          sed -i '' '/<-- SH-Generated -->/,/<-- !SH-Generated -->/c\${{ env.REPLACEMENT }}' README.md
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
