@@ -15,6 +15,10 @@ on:
           - find-and-replace
           - shell
 
+permissions:
+  # Required to be able to update and commit the README.md file.
+  contents: write
+
 env:
   REPLACE_OPEN: '<-- Generated -->'
   REPLACE_CLOSE: '<-- !Generated -->'
