@@ -23,7 +23,8 @@ jobs:
   find-and-replace:
     name: Find and Replace
     runs-on: ubuntu-latest
-    if: ${{ inputs.METHOD == 'find-and-replace' }}
+    # Run if inputs.METHOD == 'find-and-replace' or is null.
+    if: ${{ inputs.METHOD == 'find-and-replace' || inputs.METHOD == null }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -32,7 +33,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: ${{ env.REPLACE_OPEN }}([\s\S]*?)${{ env.REPLACE_CLOSE }}
-          replace: ${{ github.event.head_commit.message }}
+          replace: ${{ env.REPLACE_OPEN }}\n${{ github.event.head_commit.message }}\n${{ env.REPLACE_CLOSE }}
 
       - name: Commit and Push
         run: |
