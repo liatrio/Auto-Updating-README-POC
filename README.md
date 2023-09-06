@@ -12,8 +12,11 @@ As mentioned above, this POC is for automatically updating the README (this file
   - This will replace the content between two placeholders.
 
 <-- Generated -->
-Merge remote-tracking branch 'origin/main' into main
+Last Commit Message: Merge remote-tracking branch 'origin/main' into main
+Last Commit Author: Devin Leaman
+Last Commit Date: 2023-09-06T15:12:19-05:00
 <-- !Generated -->
+
 
 
 [0]: https://github.com/marketplace/actions/find-and-replace
