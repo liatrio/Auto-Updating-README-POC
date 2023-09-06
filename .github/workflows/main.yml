@@ -23,8 +23,8 @@ jobs:
     name: Find and Replace
     runs-on: ubuntu-latest
     env:
-      REPLACE_OPEN: '<-- FR-Generated -->'
-      REPLACE_CLOSE: '<-- !FR-Generated -->'
+      REPLACE_OPEN: '{#GENERATED#}'
+      REPLACE_CLOSE: '{!GENERATED!}'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -40,23 +40,6 @@ jobs:
             ${{ env.REPLACE_BODY }}
 
             ${{ env.REPLACE_CLOSE }}
-
-      - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-
-  shell:
-    name: Bash Method
-    runs-on: ubuntu-latest
-    needs: find-and-replace
-    env:
-      REPLACE_OPEN: '<-- SH-Generated -->'
-      REPLACE_CLOSE: '<-- !SH-Generated -->'
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Replace
-        run: sed -i '/${{ env.REPLACE_OPEN }}/,/${{ env.REPLACE_CLOSE }}/c\${{ env.REPLACE_BODY }}' README.md
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
