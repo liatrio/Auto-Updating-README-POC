@@ -11,6 +11,8 @@ permissions:
   contents: write
 
 env:
+  REPLACE_OPEN: '_#GENERATED#_'
+  REPLACE_CLOSE: '_!GENERATED!_'
   REPLACE_BODY: |
     - **Last Commit Message**: ${{ github.event.head_commit.message }}
 
@@ -22,9 +24,6 @@ jobs:
   find-and-replace:
     name: Find and Replace
     runs-on: ubuntu-latest
-    env:
-      REPLACE_OPEN: '{#GENERATED#}'
-      REPLACE_CLOSE: '{!GENERATED!}'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
