@@ -11,27 +11,7 @@ As mentioned above, this POC is for automatically updating the README (this file
 - Using bash.
   - This will replace the content between two placeholders.
 
-<-- FR-Generated -->
-
-- **Last Commit Message**: chore: Fix sed command in main.yml
-
-- **Last Commit Author**: Devin W. Leaman
-
-- **Last Commit Date**: 2023-09-06T15:48:03-05:00
-
-
-<-- !FR-Generated -->
-
-
-
-
-
-
-
-<-- SH-Generated -->
-
-<-- !SH-Generated -->
-
-
+{#GENERATED#}
+{!GENERATED!}
 
 [0]: https://github.com/marketplace/actions/find-and-replace
