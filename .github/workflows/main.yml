@@ -38,7 +38,7 @@ jobs:
         with:
           find: ${{ env.REPLACE_OPEN }}([\s\S]*?)${{ env.REPLACE_CLOSE }}
           include: README.md
-          replace: "${{ env.REPLACE_OPEN }}\n\n Last Commit Message: ${{ github.event.head_commit.message }}\n\n Last Commit Author: ${{ github.event.head_commit.author.name }}\n\n Last Commit Date: ${{ github.event.head_commit.timestamp }}\n\n${{ env.REPLACE_CLOSE }}"
+          replace: "${{ env.REPLACE_OPEN }}\n\n -**Last Commit Message**: ${{ github.event.head_commit.message }}\n\n -**Last Commit Author**: ${{ github.event.head_commit.author.name }}\n\n -**Last Commit Date**: ${{ github.event.head_commit.timestamp }}\n\n${{ env.REPLACE_CLOSE }}"
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
