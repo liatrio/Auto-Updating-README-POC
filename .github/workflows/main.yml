@@ -5,15 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      METHOD:
-        description: 'Method to use'
-        required: true
-        default: 'find-and-replace'
-        type: choice
-        options:
-          - find-and-replace
-          - shell
+    # inputs:
+    #   METHOD:
+    #     description: 'Method to use'
+    #     required: true
+    #     default: 'find-and-replace'
+    #     type: choice
+    #     options:
+    #       - find-and-replace
+    #       - shell
 
 permissions:
   # Required to be able to update and commit the README.md file.
@@ -23,8 +23,6 @@ jobs:
   find-and-replace:
     name: Find and Replace
     runs-on: ubuntu-latest
-    # Run if inputs.METHOD == 'find-and-replace' or is null.
-    if: ${{ inputs.METHOD == 'find-and-replace' || inputs.METHOD == null }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -51,7 +49,6 @@ jobs:
   shell:
     name: Bash Method
     runs-on: ubuntu-latest
-    if: ${{ inputs.METHOD == 'shell' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
