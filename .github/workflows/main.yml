@@ -11,8 +11,7 @@ permissions:
   contents: write
 
 env:
-  REPLACE_OPEN: '_#GENERATED#_'
-  REPLACE_CLOSE: '_!GENERATED!_'
+  SURROUND_TEXT: '_#GENERATED#_'
   REPLACE_BODY: |
     - **Last Commit Message**: ${{ github.event.head_commit.message }}
 
@@ -31,14 +30,14 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: ${{env.REPLACE_OPEN}}([\s\S]*?)${{env.REPLACE_CLOSE}}
+          find: ${{env.SURROUND_TEXT}}([\s\S]*?)${{env.SURROUND_TEXT}}
           include: README.md
           replace: |
-            ${{ env.REPLACE_OPEN}}
+            ${{ env.SURROUND_TEXT}}
 
             ${{ env.REPLACE_BODY }}
 
-            ${{ env.REPLACE_CLOSE }}
+            ${{ env.SURROUND_TEXT }}
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4

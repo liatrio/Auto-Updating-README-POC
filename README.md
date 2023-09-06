@@ -12,18 +12,7 @@ As mentioned above, this POC is for automatically updating the README (this file
   - This will replace the content between two placeholders.
 
 _#GENERATED#_
-
-- **Last Commit Message**: chore: Update placeholders in main.yml and README.md
-
-- Added environment variables for open and close placeholders in main.yml
-- Updated the content between two placeholders in README.md
-
-- **Last Commit Author**: Devin W. Leaman
-
-- **Last Commit Date**: 2023-09-06T15:58:03-05:00
-
-
-_!GENERATED!_
+_#GENERATED#_
 
 
 
