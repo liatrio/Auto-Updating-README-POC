@@ -38,10 +38,10 @@ jobs:
         with:
           find: ${{ env.REPLACE_OPEN }}([\s\S]*?)${{ env.REPLACE_CLOSE }}
           replace: |
-            ${{ env.REPLACE_OPEN }}
-            Last Commit Message: ${{ github.event.head_commit.message }}
-            Last Commit Author: ${{ github.event.head_commit.author.name }}
-            Last Commit Date: ${{ github.event.head_commit.timestamp }}
+            ${{ env.REPLACE_OPEN }}\n
+            Last Commit Message: ${{ github.event.head_commit.message }}\n
+            Last Commit Author: ${{ github.event.head_commit.author.name }}\n
+            Last Commit Date: ${{ github.event.head_commit.timestamp }}\n
             ${{ env.REPLACE_CLOSE }}
 
       - name: Commit and Push
