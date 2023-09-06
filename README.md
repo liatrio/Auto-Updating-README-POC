@@ -11,16 +11,13 @@ As mentioned above, this POC is for automatically updating the README (this file
 - Using bash.
   - This will replace the content between two placeholders.
 
-<-- Generated -->
+<-- FR-Generated -->
 
- - **Last Commit Message**: chore: update main.yml formatting
+<-- !FR-Generated -->
 
- - **Last Commit Author**: Devin W. Leaman
+<-- SH-Generated -->
 
- - **Last Commit Date**: 2023-09-06T15:24:23-05:00
-
-<-- !Generated -->
-
+<-- !SH-Generated -->
 
 
 
