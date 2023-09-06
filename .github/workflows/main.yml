@@ -37,7 +37,10 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: ${{ env.REPLACE_OPEN }}([\s\S]*?)${{ env.REPLACE_CLOSE }}
-          replace: ${{ env.REPLACE_OPEN }}\n${{ github.event.head_commit.message }}\n${{ env.REPLACE_CLOSE }}
+          replace: |
+            ${{ env.REPLACE_OPEN }}
+            ${{ github.event.head_commit.message }}
+            ${{ env.REPLACE_CLOSE }}
 
       - name: Commit and Push
         run: |
