@@ -1,0 +1,63 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      METHOD:
+        description: 'Method to use'
+        required: true
+        default: 'find-and-replace'
+        type: choice
+        options:
+          - find-and-replace
+          - shell
+
+env:
+  REPLACE_OPEN: '<-- Generated -->'
+  REPLACE_CLOSE: '<-- !Generated -->'
+
+jobs:
+  find-and-replace:
+    name: Find and Replace
+    runs-on: ubuntu-latest
+    if: ${{ inputs.METHOD == 'find-and-replace' }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: ${{ env.REPLACE_OPEN }}([\s\S]*?)${{ env.REPLACE_CLOSE }}
+          replace: ${{ github.event.head_commit.message }}
+
+      - name: Commit and Push
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Updated README.md"
+          git push
+
+  shell:
+    name: Bash Method
+    runs-on: ubuntu-latest
+    if: ${{ inputs.METHOD == 'shell' }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Replace
+        run: |
+          sed -i "s/${{ env.REPLACE_OPEN }}[\s\S]*?${{ env.REPLACE_CLOSE }}/${{ github.event.head_commit.message }}/g" README.md
+
+      - name: Commit and Push
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Updated README.md"
+          git push
