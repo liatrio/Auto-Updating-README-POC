@@ -13,11 +13,11 @@ As mentioned above, this POC is for automatically updating the README (this file
 
 <-- Generated -->
 
- -**Last Commit Message**: Merge remote-tracking branch 'origin/main' into main
+ - **Last Commit Message**: chore: update main.yml formatting
 
- -**Last Commit Author**: Devin Leaman
+ - **Last Commit Author**: Devin W. Leaman
 
- -**Last Commit Date**: 2023-09-06T15:23:32-05:00
+ - **Last Commit Date**: 2023-09-06T15:24:23-05:00
 
 <-- !Generated -->
 
