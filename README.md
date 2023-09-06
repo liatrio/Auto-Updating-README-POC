@@ -12,6 +12,15 @@ As mentioned above, this POC is for automatically updating the README (this file
   - This will replace the content between two placeholders.
 
 {#GENERATED#}
+
+- **Last Commit Message**: chore: Update placeholders in README.md
+
+- **Last Commit Author**: Devin W. Leaman
+
+- **Last Commit Date**: 2023-09-06T15:53:29-05:00
+
+
 {!GENERATED!}
+
 
 [0]: https://github.com/marketplace/actions/find-and-replace
