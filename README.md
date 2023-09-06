@@ -13,13 +13,14 @@ As mentioned above, this POC is for automatically updating the README (this file
 
 <-- FR-Generated -->
 
-- **Last Commit Message**: Merge remote-tracking branch 'origin/main' into main
+- **Last Commit Message**: ci: add dependency on find-and-replace workflow
 
-- **Last Commit Author**: Devin Leaman
+- **Last Commit Author**: Devin W. Leaman
 
-- **Last Commit Date**: 2023-09-06T15:30:09-05:00
+- **Last Commit Date**: 2023-09-06T15:31:04-05:00
 
 <-- !FR-Generated -->
+
 
 
 
