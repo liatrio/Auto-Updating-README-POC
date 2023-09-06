@@ -11,6 +11,9 @@ As mentioned above, this POC is for automatically updating the README (this file
 - Using bash.
   - This will replace the content between two placeholders.
 
-<-- Generated -->\nchore: Add permissions for README.md update\n<-- !Generated -->
+<-- Generated -->
+Merge remote-tracking branch 'origin/main' into main
+<-- !Generated -->
+
 
 [0]: https://github.com/marketplace/actions/find-and-replace
