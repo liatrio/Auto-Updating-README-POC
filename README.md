@@ -11,10 +11,10 @@ As mentioned above, this POC is for automatically updating the README (this file
 - Using bash.
   - This will replace the content between two placeholders.
 
-<-- Generated -->\n
-Last Commit Message: chore(ci): update commit message template\n
-Last Commit Author: Devin W. Leaman\n
-Last Commit Date: 2023-09-06T15:13:23-05:00\n
+<-- Generated -->
+ Last Commit Message: Merge remote-tracking branch 'origin/main' into main
+ Last Commit Author: Devin Leaman
+ Last Commit Date: 2023-09-06T15:20:17-05:00
 <-- !Generated -->
 
 
