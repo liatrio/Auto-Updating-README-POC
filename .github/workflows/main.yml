@@ -5,24 +5,26 @@ on:
     branches:
       - main
   workflow_dispatch:
-    # inputs:
-    #   METHOD:
-    #     description: 'Method to use'
-    #     required: true
-    #     default: 'find-and-replace'
-    #     type: choice
-    #     options:
-    #       - find-and-replace
-    #       - shell
 
 permissions:
   # Required to be able to update and commit the README.md file.
   contents: write
 
+env:
+  REPLACE_BODY: |
+    - **Last Commit Message**: ${{ github.event.head_commit.message }}
+
+    - **Last Commit Author**: ${{ github.event.head_commit.author.name }}
+
+    - **Last Commit Date**: ${{ github.event.head_commit.timestamp }}
+
 jobs:
   find-and-replace:
     name: Find and Replace
     runs-on: ubuntu-latest
+    env:
+      REPLACE_OPEN: '<-- FR-Generated -->'
+      REPLACE_CLOSE: '<-- !FR-Generated -->'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -30,18 +32,14 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: <-- FR-Generated -->([\s\S]*?)<-- !FR-Generated -->
+          find: ${{env.REPLACE_OPEN}}([\s\S]*?)${{env.REPLACE_CLOSE}}
           include: README.md
           replace: |
-            <-- FR-Generated -->
+            ${{ env.REPLACE_OPEN}}
 
-            - **Last Commit Message**: ${{ github.event.head_commit.message }}
+            ${{ env.REPLACE_BODY }}
 
-            - **Last Commit Author**: ${{ github.event.head_commit.author.name }}
-
-            - **Last Commit Date**: ${{ github.event.head_commit.timestamp }}
-
-            <-- !FR-Generated -->
+            ${{ env.REPLACE_CLOSE }}
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -50,27 +48,15 @@ jobs:
     name: Bash Method
     runs-on: ubuntu-latest
     needs: find-and-replace
+    env:
+      REPLACE_OPEN: '<-- SH-Generated -->'
+      REPLACE_CLOSE: '<-- !SH-Generated -->'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # - name: Replace
-      #   run: |
-      #     sed -i "s/<-- SH-Generated -->[\s\S]*?<-- !SH-Generated -->/${{ github.event.head_commit.message }}/g" README.md
       - name: Replace
-        env:
-          REPLACEMENT: |
-            <-- SH-Generated -->
-
-            - **Last Commit Message**: ${{ github.event.head_commit.message }}
-
-            - **Last Commit Author**: ${{ github.event.head_commit.author.name }}
-
-            - **Last Commit Date**: ${{ github.event.head_commit.timestamp }}
-
-            <-- !SH-Generated -->
-        run: |
-          sed -i '' '/<-- SH-Generated -->/,/<-- !SH-Generated -->/c\${{ env.REPLACEMENT }}' README.md
+        run: sed -i '' '/${{ env.REPLACE_OPEN }}/,/${{ env.REPLACE_CLOSE }}/c\${{ env.REPLACE_BODY }}' README.md
 
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
