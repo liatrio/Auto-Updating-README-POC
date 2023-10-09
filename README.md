@@ -2,6 +2,10 @@
 
 This repository is a proof of concept (POC) for how you can automatically update the README of a repository using GitHub Actions.
 
+## Archived
+
+This repository is no longer actively maintained as it has served its purpose so it is being archived.
+
 ## What
 
 As mentioned above, this POC is for automatically updating the README (this file) of a repository with a GitHub Actions. In more detail, this means that this POC will automatically update the README of a repo in the following ways:
